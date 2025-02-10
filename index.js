@@ -273,11 +273,16 @@ async function loginForm() {
         }
 
     } catch (error) {
-        console.error("Error:", error);
-        const errorText = document.createElement('small');
-        errorText.textContent = 'Please try again. Username or password incorrect.';
-        errorText.style.color = 'red';
-        document.getElementById("login").appendChild(errorText);
+        // Check if an error message already exists
+        let existingErrorText = document.getElementById("error-message");
+    
+        if (!existingErrorText) {
+            const errorText = document.createElement('small');
+            errorText.id = "error-message";
+            errorText.textContent = 'Please try again. Username or password incorrect.';
+            errorText.style.color = 'red';
+            document.getElementById("login").appendChild(errorText);
+        }
     }
 }
 
