@@ -63,7 +63,7 @@ function setupCategorySelection() {
 //fetch category list
 async function fetchCategories() {
     try {
-        const response = await fetch("http://localhost:5258/User/categories", {
+        const response = await fetch("https://tr-projeect-cbg9cvchhbg4bta9.ukwest-01.azurewebsites.net/User/categories", {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -138,7 +138,7 @@ function register() {
 
     async function asyncRegister() {
         try {
-            const response = await fetch('http://localhost:5258/User/register', {
+            const response = await fetch('https://tr-projeect-cbg9cvchhbg4bta9.ukwest-01.azurewebsites.net/User/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -152,7 +152,6 @@ function register() {
             })
             
             if (response.ok) {
-                // const result = await response.text();
                 window.location.href = "/register/login.html";
             } else {
                 const error = await response.text();
@@ -194,7 +193,7 @@ function registerTasker() {
     
     async function asyncRegisterTasker() {
         try {
-            const response = await fetch('http://localhost:5258/User/registertasker', {
+            const response = await fetch('https://tr-projeect-cbg9cvchhbg4bta9.ukwest-01.azurewebsites.net/User/registertasker', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -213,7 +212,6 @@ function registerTasker() {
             });
             
             if (response.ok) {
-                // const result = await response.text();
                 window.location.href = "/register/login.html";
             } else {
                 const error = await response.text();
@@ -240,7 +238,7 @@ async function loginForm() {
     const password = document.getElementById("password").value;
 
     try {
-        const response1 = await fetch('http://localhost:5258/User/login', {
+        const response1 = await fetch('https://tr-projeect-cbg9cvchhbg4bta9.ukwest-01.azurewebsites.net/User/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password })
@@ -253,7 +251,7 @@ async function loginForm() {
         const token = await response1.text();
         localStorage.setItem('authToken', token);
 
-        const userResponse = await fetch("http://localhost:5258/User/users");
+        const userResponse = await fetch("https://tr-projeect-cbg9cvchhbg4bta9.ukwest-01.azurewebsites.net/User/users");
 
         if (!userResponse.ok) {
             throw new Error("Fetching additional data failed");
@@ -288,7 +286,7 @@ async function loginForm() {
 
 // check out payment for tasks
 async function initiatePayment(taskerId, amount, assignedToId) {
-    const response = await fetch('http://localhost:5258/api/Payment/create-checkout-session', {
+    const response = await fetch('https://tr-projeect-cbg9cvchhbg4bta9.ukwest-01.azurewebsites.net/api/Payment/create-checkout-session', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -311,7 +309,7 @@ async function initiatePayment(taskerId, amount, assignedToId) {
 
 // assign assignedtoid value
 async function assignTaskToTasker(taskId, assignedToId) {
-    const response = await fetch(`http://localhost:5258/User/task/${taskId}/assign`, {
+    const response = await fetch(`https://tr-projeect-cbg9cvchhbg4bta9.ukwest-01.azurewebsites.net/User/task/${taskId}/assign`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -330,7 +328,7 @@ async function assignTaskToTasker(taskId, assignedToId) {
 const usersList = document.getElementById("users-list");
 function usersInfo() {
     async function getData() {
-        const url = "http://localhost:5258/User/tasker-users";
+        const url = "https://tr-projeect-cbg9cvchhbg4bta9.ukwest-01.azurewebsites.net/User/tasker-users";
         try {
             const response = await fetch(url);
             if (!response.ok) {
@@ -406,7 +404,7 @@ const welcomeText = document.getElementById("welcome-text");
 // fetch logged in user details
 async function fetchUserData() {
     try {
-        const response = await fetch("http://localhost:5258/user/id", {
+        const response = await fetch("https://tr-projeect-cbg9cvchhbg4bta9.ukwest-01.azurewebsites.net/user/id", {
             method: 'GET',
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('authToken')}`,
@@ -478,7 +476,7 @@ if(taskListContainer){
 
 // user's created active task list
 async function fetchTaskList() {
-    const url = "http://localhost:5258/User/tasks";
+    const url = "https://tr-projeect-cbg9cvchhbg4bta9.ukwest-01.azurewebsites.net/User/tasks";
     try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -493,7 +491,7 @@ async function fetchTaskList() {
 
 // user's created active task list
 async function fetchActiveTaskList() {
-    const url = "http://localhost:5258/User/active-tasks";
+    const url = "https://tr-projeect-cbg9cvchhbg4bta9.ukwest-01.azurewebsites.net/User/active-tasks";
     try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -507,7 +505,7 @@ async function fetchActiveTaskList() {
 }
 
 async function fetchUserDetails(userId) {
-    const response = await fetch(`http://localhost:5258/User/details/${userId}`);
+    const response = await fetch(`https://tr-projeect-cbg9cvchhbg4bta9.ukwest-01.azurewebsites.net/User/details/${userId}`);
    
     if (!response.ok) {
         throw new Error(`Failed to fetch user details for ID: ${userId}`);
@@ -698,7 +696,7 @@ async function displayActivetask() {
 async function deleteTask(taskId) {
     if (confirm("Are you sure you want to delete this task?")) {
         try {
-            const response = await fetch(`http://localhost:5258/User/task/${taskId}`, {
+            const response = await fetch(`https://tr-projeect-cbg9cvchhbg4bta9.ukwest-01.azurewebsites.net/User/task/${taskId}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -736,7 +734,7 @@ async function updateTaskStatus(taskId) {
     }
 
     // Update the task status on the server
-    await fetch(`http://localhost:5258/User/task/${taskId}/status`, {
+    await fetch(`https://tr-projeect-cbg9cvchhbg4bta9.ukwest-01.azurewebsites.net/User/task/${taskId}/status`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(selectedStatus),
@@ -760,7 +758,7 @@ async function displayAssignedTasks() {
         const userData = await fetchUserData();
         const userId = userData.id;
 
-        const response = await fetch(`http://localhost:5258/User/assigned-tasks?taskerId=${userId}`);
+        const response = await fetch(`https://tr-projeect-cbg9cvchhbg4bta9.ukwest-01.azurewebsites.net/User/assigned-tasks?taskerId=${userId}`);
         if (!response.ok) {
             throw new Error("Failed to fetch assigned tasks");
         }
@@ -884,14 +882,13 @@ async function deleteProfile() {
         const userData = await fetchUserData();
         const userId = userData.id;
 
-        const response = await fetch(`http://localhost:5258/User/${userId}`, {
+        const response = await fetch(`https://tr-projeect-cbg9cvchhbg4bta9.ukwest-01.azurewebsites.net/User/${userId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
             }
         })
         if (response.ok) {
-            // const result = await response.text();
             window.location.href = "/";
         } else {
             const error = await response.text();
@@ -961,7 +958,7 @@ function BookTask(){
 
     async function fetchTaskRequest() {
         try {
-            const response = await fetch("http://localhost:5258/User/taskrequest",{
+            const response = await fetch("https://tr-projeect-cbg9cvchhbg4bta9.ukwest-01.azurewebsites.net/User/taskrequest",{
                 method: "POST",
                 headers:  {
                     Authorization: `Bearer ${localStorage.getItem('authToken')}`,
