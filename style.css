@@ -399,12 +399,6 @@ img {
 #root-container .assigned-task .task-list-item .task-status .status.Cancelled {
   color: red;
 }
-#root-container .assigned-task .task-list-item .no-tasks {
-  text-align: center;
-  padding: 20px;
-  font-size: 18px;
-  color: #999;
-}
 #root-container .assigned-task .task-list-item .task-dropdown {
   display: none;
   position: absolute;

@@ -584,7 +584,7 @@ async function displayAllBookedTask() {
             </div>
         `).join("")
     : `
-        <div class="no-tasks">
+        <div class="task-list-item">
             <p>No tasks found. <a href="/register/welcome.html">Book a Task</a></p>
         </div>
     `;
@@ -668,7 +668,7 @@ async function displayActivetask() {
         `)
         .join("")
     : `
-        <div class="no-tasks">
+        <div class="task-list-item">
             <p>No tasks found. <a href="/register/welcome.html">Book a Task</a></p>
         </div>
     `;
@@ -839,7 +839,7 @@ async function displayAssignedTasks() {
                 }
             });
         } else {
-            taskList.innerHTML = `<div class="no-tasks"><p>No tasks assigned yet.</p></div>`;
+            taskList.innerHTML = `<div class="task-list-item"><p>No tasks assigned yet.</p></div>`;
         }
     } catch (error) {
         console.error("Error fetching tasks:", error);
