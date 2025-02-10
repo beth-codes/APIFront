@@ -339,7 +339,7 @@ img {
             &:has(.Cancelled, .Completed){
                 opacity: .5;
                 background-color: lightgray;
-                // pointer-events: none;
+                pointer-events: none;
 
                 &:last-child{
                     border-radius: 0 0 1.5rem 1.5rem;
