@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TR</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+</head>
+<body>
+    <div id="root-container">
+        <header>
+            <div class="logo"><h1><a href="/">TR</a></h1></div>
+            <nav class="navbar">
+                <ul class="navbar-list">
+                    <li class="list-item"><a href="/register/register.html">Register</a></li>
+                    <li class="list-item"><a href="/register/login.html">Login</a></li>
+                    <li class="list-item"><a href="/about-us.html">About Us</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section class="banner">
+                <h2>Tasker Login</h2>
+                <div class="flex">
+                    <form action="/register/welcome-tasker.html" method="POST" id="login">
+                        <input type="text" id="username" placeholder="Username" required><br>
+                        <input type="password" id="password" placeholder="Password" required><br>
+                        <button type="submit">Login</button>
+                    </form>
+                    <small>Dont have an account? <a href="/register/register.html">Register</a></small>
+                </div>
+            </section>
+        </main>
+    </div>
+<script src="/index.js"></script>
+    
+</body>
+</html>

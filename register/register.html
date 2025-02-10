@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TR</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div id="root-container">
+        <header>
+            <div class="logo"><h1><a href="/">TR</a></h1></div>
+            <nav class="navbar">
+                <ul class="navbar-list">
+                    <li class="list-item"><a href="/register/register.html">Register</a></li>
+                    <li class="list-item"><a href="/register/login.html">Login</a></li>
+                    <li class="list-item"><a href="/about-us.html">About Us</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section class="banner">
+                <h2>Register</h2>
+                <div class="forms">
+                    <div class="select-from">
+                        <span class="js-register-user active">User</span>
+                        <span class="js-register-tasker">Tasker</span>
+                    </div>
+                    <form id="register">
+                        <input type="text" id="full-name" placeholder="Name" required><br>
+                        <input type="text" id="user-name" placeholder="Username" required><br>
+                        <input type="password" id="passcode" placeholder="Password" required><br>
+                        <input type="email" id="email" placeholder="Eamil address" required><br>
+                        <button type="submit">Signup</button>
+                    </form>
+                    <form id="register-tasker">
+                        <input type="text" id="tasker-fullname" placeholder="Name" required><br>
+                        <input type="text" id="tasker-username" placeholder="Username" required><br>
+                        <input type="password" id="tasker-passcode" placeholder="Password" required><br>
+                        <input type="email" id="tasker-email" placeholder="Eamil address" required><br>
+                        <input type="text" id="tasker" placeholder="Tasker" disabled><br>
+                        <input type="text" id="tasker-skills" placeholder="Skills" required><br>
+                        <select name="experience" id="tasker-experience" required>
+                            <option value="" disabled selected>Experience Level</option>
+                            <option value="junior">Junior</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="experienced">Experienced</option>
+                        </select>
+                        <select name="category" id="category-list" required>
+                            <option value="" disabled selected>Category</option>
+                        </select>
+                        <input type="number" id="tasker-rate" placeholder="Hourly Rate" required><br>
+                        <button type="submit">Signup</button>
+                    </form>
+
+                </div>
+            </section>
+        </main>
+    </div>
+<script src="/index.js"></script>
+</body>
+</html>
