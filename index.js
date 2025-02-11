@@ -148,18 +148,19 @@ function register() {
                     Email: email
                 })
             });
-            const errorText = await response.text();
-            console.log(errorText)
+    
+            const errorText = await response.text(); // Read response once
+    
             if (response.ok) {
                 window.location.href = "/register/login.html";
             } else {
-                const errorText = await response.text();
                 displayError(errorText);
             }
         } catch (error) {
             displayError("Registration failed. Please try again.");
         }
     }
+    
     
     function displayError(message) {
         let errorElement = document.getElementById("error-message");
@@ -171,6 +172,7 @@ function register() {
         }
         errorElement.textContent = message;
     }
+    
     // async function asyncRegister() {
     //     try {
     //         const response = await fetch('https://tr-projeect-cbg9cvchhbg4bta9.ukwest-01.azurewebsites.net/User/register', {
