@@ -5,6 +5,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const taskCategoryId = parseInt(urlParams.get('categoryId'));
 const body = document.body;
 let selectedCategoryId = null;
+let UrlEndpoint = "https://tr-projeect-cbg9cvchhbg4bta9.ukwest-01.azurewebsites.net";
 
 //Reuseables 
 //reuseable shuffle click display function
@@ -63,7 +64,7 @@ function setupCategorySelection() {
 //fetch category list
 async function fetchCategories() {
     try {
-        const response = await fetch("http://localhost:5258/User/categories", {
+        const response = await fetch(`${UrlEndpoint}/User/categories`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -143,7 +144,7 @@ function register() {
 
     async function asyncRegister() {
         try {
-            const response = await fetch('http://localhost:5258/User/register', {
+            const response = await fetch(`${UrlEndpoint}/User/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -198,7 +199,7 @@ function registerTasker() {
     
     async function asyncRegisterTasker() {
         try {
-            const response = await fetch('http://localhost:5258/User/registertasker', {
+            const response = await fetch(`${UrlEndpoint}/User/registertasker`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -244,7 +245,7 @@ async function loginForm() {
     const password = document.getElementById("password").value;
 
     try {
-        const response = await fetch('http://localhost:5258/User/login', {
+        const response = await fetch(`${UrlEndpoint}/User/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ usernameOrEmail, password })
@@ -269,7 +270,7 @@ async function loginForm() {
 
 // check out payment for tasks
 async function initiatePayment(taskerId, amount, assignedToId) {
-    const response = await fetch('http://localhost:5258/api/Payment/create-checkout-session', {
+    const response = await fetch(`${UrlEndpoint}/api/Payment/create-checkout-session`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -292,7 +293,7 @@ async function initiatePayment(taskerId, amount, assignedToId) {
 
 // assign assignedtoid value
 async function assignTaskToTasker(taskId, assignedToId) {
-    const response = await fetch(`http://localhost:5258/User/task/${taskId}/assign`, {
+    const response = await fetch(`${UrlEndpoint}/User/task/${taskId}/assign`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -311,7 +312,7 @@ async function assignTaskToTasker(taskId, assignedToId) {
 const usersList = document.getElementById("users-list");
 function usersInfo() {
     async function getData() {
-        const url = "http://localhost:5258/User/tasker-users";
+        const url = `${UrlEndpoint}/User/tasker-users`;
         try {
             const response = await fetch(url);
             if (!response.ok) {
@@ -382,7 +383,7 @@ if(usersList){
 // fetch logged in user details
 async function fetchUserData() {
     try {
-        const response = await fetch("http://localhost:5258/user/id", {
+        const response = await fetch(`${UrlEndpoint}/user/id`, {
             method: 'GET',
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('authToken')}`,
@@ -454,7 +455,7 @@ if(taskListContainer){
 
 // user's created active task list
 async function fetchTaskList() {
-    const url = "http://localhost:5258/User/tasks";
+    const url = `${UrlEndpoint}/User/tasks`;
     try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -469,7 +470,7 @@ async function fetchTaskList() {
 
 // user's created active task list
 async function fetchActiveTaskList() {
-    const url = "http://localhost:5258/User/active-tasks";
+    const url = `${UrlEndpoint}/User/active-tasks`;
     try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -483,7 +484,7 @@ async function fetchActiveTaskList() {
 }
 
 async function fetchUserDetails(userId) {
-    const response = await fetch(`http://localhost:5258/User/details/${userId}`);
+    const response = await fetch(`${UrlEndpoint}/User/details/${userId}`);
    
     if (!response.ok) {
         throw new Error(`Failed to fetch user details for ID: ${userId}`);
@@ -674,7 +675,7 @@ async function displayActivetask() {
 async function deleteTask(taskId) {
     if (confirm("Are you sure you want to delete this task?")) {
         try {
-            const response = await fetch(`http://localhost:5258/User/task/${taskId}`, {
+            const response = await fetch(`${UrlEndpoint}/User/task/${taskId}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -712,7 +713,7 @@ async function updateTaskStatus(taskId) {
     }
 
     // Update the task status on the server
-    await fetch(`http://localhost:5258/User/task/${taskId}/status`, {
+    await fetch(`${UrlEndpoint}/User/task/${taskId}/status`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(selectedStatus),
@@ -736,7 +737,7 @@ async function displayAssignedTasks() {
         const userData = await fetchUserData();
         const userId = userData.id;
 
-        const response = await fetch(`http://localhost:5258/User/assigned-tasks?taskerId=${userId}`);
+        const response = await fetch(`${UrlEndpoint}/User/assigned-tasks?taskerId=${userId}`);
         if (!response.ok) {
             throw new Error("Failed to fetch assigned tasks");
         }
@@ -860,7 +861,7 @@ async function deleteProfile() {
         const userData = await fetchUserData();
         const userId = userData.id;
 
-        const response = await fetch(`http://localhost:5258/User/${userId}`, {
+        const response = await fetch(`${UrlEndpoint}/User/${userId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -936,7 +937,7 @@ function BookTask(){
 
     async function fetchTaskRequest() {
         try {
-            const response = await fetch("http://localhost:5258/User/taskrequest",{
+            const response = await fetch(`${UrlEndpoint}/User/taskrequest`,{
                 method: "POST",
                 headers:  {
                     Authorization: `Bearer ${localStorage.getItem('authToken')}`,
