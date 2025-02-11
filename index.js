@@ -140,64 +140,27 @@ function register() {
         try {
             const response = await fetch('https://tr-projeect-cbg9cvchhbg4bta9.ukwest-01.azurewebsites.net/User/register', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                },
                 body: JSON.stringify({
                     Fullname: fullName,
                     Username: username,
                     Password: password,
                     Email: email
                 })
-            });
-    
-            const errorText = await response.text(); // Read response once
-    
+            })
+            
             if (response.ok) {
                 window.location.href = "/register/login.html";
             } else {
-                displayError(errorText);
+                const error = await response.text();
+                console.error("Server Error:", error);
             }
         } catch (error) {
-            displayError("Registration failed. Please try again.");
+            console.error("User is not registered:", error.message);
         }
     }
-    
-    
-    function displayError(message) {
-        let errorElement = document.getElementById("error-message");
-        if (!errorElement) {
-            errorElement = document.createElement('small');
-            errorElement.id = "error-message";
-            errorElement.style.color = 'red';
-            document.querySelector(".forms").appendChild(errorElement);
-        }
-        errorElement.textContent = message;
-    }
-    
-    // async function asyncRegister() {
-    //     try {
-    //         const response = await fetch('https://tr-projeect-cbg9cvchhbg4bta9.ukwest-01.azurewebsites.net/User/register', {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //             },
-    //             body: JSON.stringify({
-    //                 Fullname: fullName,
-    //                 Username: username,
-    //                 Password: password,
-    //                 Email: email
-    //             })
-    //         })
-            
-    //         if (response.ok) {
-    //             window.location.href = "/register/login.html";
-    //         } else {
-    //             const error = await response.text();
-    //             console.error("Server Error:", error);
-    //         }
-    //     } catch (error) {
-    //         console.error("User is not registered:", error.message);
-    //     }
-    // }
     asyncRegister();
 }
 
@@ -207,7 +170,7 @@ const registerTaskerForm = document.getElementById('register-tasker');
 if(registerTaskerForm){
     this.addEventListener("submit", function(e) {
         e.preventDefault();
-        // registerTasker();
+        registerTasker();
     });
 
 }
