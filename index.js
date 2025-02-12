@@ -267,12 +267,12 @@ async function loginForm() {
         }
         localStorage.setItem('authToken', result.data.token);
         const loggedInUser = result.data.isTasker;
-        if (loggedInUser.isTasker = true) {
-            window.location.href = "/register/welcome-tasker.html";
-        } else if(loggedInUser.isTasker = false){
-            window.location.href = "/register/welcome.html";
+        if (loggedInUser === true) {  
+            window.location.href = "/register/welcome-tasker.html";  
+        } else {  
+            window.location.href = "/register/welcome.html";  
         }
-
+        
     } catch (error) {
         displayError('Please try again. Username or password incorrect.', "#login")
     }
