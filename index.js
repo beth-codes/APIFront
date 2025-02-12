@@ -343,16 +343,20 @@ function usersInfo() {
                             <div class="tasker-image">
                                 <img src="/images/male-avatar.png" alt="Tasker Photo" />
                             </div>
-                            <a class="profile-btn" href="#">View Profile</a>
-                            <small>You can adjust task details, or change task time after booking.</small>
                         </div>
                     `;
                     const taskerDescription = `
-                        <div class="tasker-description">
+                        <div class="tasker-description flex">
+                            <div>
                             <p class="name">${user.user?.fullName || "N/A"}</p>
                             <p class="name">Rate: $${user.hourlyRate || "N/A"}</p>
                             <p class="task-details">${user.skills || "No Skills Provided"}</p>
                             <p>Experience Level: ${user.experienceLevel || "No Experience"}</p>
+                            </div>
+                            <div class="tasker-btn flex">
+                                <small>You can adjust task details, or change task time after booking.</small>
+                            </div>
+
                         </div>
                     `;
                     taskerContainer.innerHTML = taskerInfo + taskerDescription;
@@ -376,7 +380,7 @@ function usersInfo() {
 
                     });
                   
-                    taskerContainer.querySelector('.tasker-info').appendChild(button);
+                    taskerContainer.querySelector('.tasker-btn').appendChild(button);
                     usersList.appendChild(taskerContainer);
                 }
             });
@@ -552,7 +556,7 @@ async function displayAllBookedTask() {
                     </div>`: ''}
                     <p class="title">${task.title}</p>
                     <div class="task-status">
-                        Status: <strong class="status ${!task.assignedToId ? 'complete-booking' : task.status}">${!task.assignedToId ? 'Complete Booking' : task.status}</strong>
+                        Status: <strong class="status more ${!task.assignedToId ? 'complete-booking' : task.status}">${!task.assignedToId ? 'Complete Booking' : task.status}</strong>
                     </div>
                 </div>
                 ${!task.assignedToId ? `

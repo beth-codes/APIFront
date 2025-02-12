@@ -190,6 +190,7 @@ img {
                 }
                 .tasker-description{
                     width: 50%;
+                    gap: 1.5rem;
                     @media screen and (max-width: 600px) {
                         width: 100%;
                         text-align: center;
@@ -381,6 +382,9 @@ img {
                 top: -15%;
                 right: -1%;
                 cursor: pointer;
+                &:hover{
+                    opacity: .5;
+                }
                 
             }
         
@@ -405,6 +409,10 @@ img {
                 }
                 .status.complete-booking{
                     color: red;
+                    position: unset;
+                    &:hover{
+                        opacity: .5;
+                    }
                 }
                 .status.Pending {
                     color: orange;

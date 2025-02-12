@@ -212,6 +212,7 @@ img {
 }
 #root-container .recommendation-banner #users-list .tasker-container .tasker-description {
   width: 50%;
+  gap: 1.5rem;
 }
 @media screen and (max-width: 600px) {
   #root-container .recommendation-banner #users-list .tasker-container .tasker-description {
@@ -399,6 +400,9 @@ img {
   right: -1%;
   cursor: pointer;
 }
+#root-container .assigned-task .task-list-item .more:hover {
+  opacity: 0.5;
+}
 #root-container .assigned-task .task-list-item .task-info p {
   font-size: 14px;
   color: #666;
@@ -417,6 +421,10 @@ img {
 }
 #root-container .assigned-task .task-list-item .task-status .status.complete-booking {
   color: red;
+  position: unset;
+}
+#root-container .assigned-task .task-list-item .task-status .status.complete-booking:hover {
+  opacity: 0.5;
 }
 #root-container .assigned-task .task-list-item .task-status .status.Pending {
   color: orange;
