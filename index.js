@@ -341,7 +341,7 @@ function usersInfo() {
                     const taskerInfo = `
                         <div class="tasker-info">
                             <div class="tasker-image">
-                                <img src="https://images.unsplash.com/photo-1733521101235-192affad9fec?q=80&w=1740&auto=format&fit=crop" alt="Tasker Photo" />
+                                <img src="/images/male-avatar.png" alt="Tasker Photo" />
                             </div>
                             <a class="profile-btn" href="#">View Profile</a>
                             <small>You can adjust task details, or change task time after booking.</small>
