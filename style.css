@@ -44,7 +44,7 @@ button:hover, .continue-btn:hover {
   }
 }
 
-#error-message {
+.error-message {
   color: red;
   line-height: 2rem;
 }
@@ -253,8 +253,17 @@ img {
 #root-container .select-from span.js-register-tasker {
   border-radius: 0 10px 10px 0;
 }
-#root-container #register-tasker {
+#root-container .register-form {
   display: none;
+}
+#root-container .register-form.active {
+  display: block;
+}
+#root-container .register-tasker-form {
+  display: none;
+}
+#root-container .register-tasker-form.active {
+  display: block;
 }
 #root-container input, #root-container textarea, #root-container select, #root-container option {
   width: 100%;
@@ -333,6 +342,7 @@ img {
 #root-container .task-list-container .tasks-container {
   border: 1px solid rgba(51, 51, 51, 0.537254902);
   border-radius: 1.5rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 #root-container .task-list-container .tasks-container .tasks-section {
   display: flex;

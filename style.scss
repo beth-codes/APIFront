@@ -39,7 +39,7 @@ button, .continue-btn{
     }
 }
 
-#error-message{
+.error-message{
     color: red;
     line-height: 2rem;
 }
@@ -234,10 +234,18 @@ img {
             }
         }
     }
-  
-    #register-tasker{
+    .register-form{
         display: none;
-    }
+        &.active{
+            display: block;
+        }
+    } 
+    .register-tasker-form{
+        display: none;
+        &.active{
+            display: block;
+        }
+    } 
     input, textarea, select, option{
         width: 100%;
         padding: 1rem;
@@ -314,6 +322,7 @@ img {
         .tasks-container{
             border: 1px solid #33333389;
             border-radius: 1.5rem;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
             .tasks-section{
                 display: flex;
                 justify-content: center;

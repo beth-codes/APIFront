@@ -30,6 +30,22 @@ function setupTabNavigation(navSelector, contentSelector, activeClass = 'active'
     });
 }
 
+//display error on login/ register
+function displayError(message, appendError) {
+    let errorContainer = document.querySelector(appendError); 
+    if (!errorContainer) return;
+    let existingError = errorContainer.querySelector(".error-message");
+
+    if (!existingError) {
+        existingError = document.createElement('small');
+        existingError.className = "error-message";
+        errorContainer.appendChild(existingError);
+    }
+    existingError.textContent = message;
+}
+
+
+
 // Check if user is not logged in and not already on login, register, home, or about us page
 if (!localStorage.getItem('authToken')) {
     const currentPath = window.location.pathname;
@@ -101,6 +117,9 @@ async function categoryList() {
     const categories = await fetchCategories(); 
     renderCategoryList(categories);
 }
+const activeRegisterForm = document.querySelector('.register-form');
+const activeRegisterTaskerForm = document.querySelector('.register-tasker-form');
+activeRegisterForm.classList.add('active')
 // Select between user and tasker form
 const selectFrom = document.querySelector('.select-from');
 if(selectFrom){
@@ -108,13 +127,17 @@ if(selectFrom){
         if (e.target.tagName === 'SPAN') {
             selectFrom.querySelectorAll('span').forEach(el => el.classList.remove('active'));
             e.target.classList.add('active');
-    
+        
             if (e.target.classList.contains('js-register-user')) {
-                registerForm.style.display = 'block';
-                registerTaskerForm.style.display = 'none';
+                // registerForm.style.display = 'block';
+                activeRegisterForm.classList.add('active')
+                // registerTaskerForm.style.display = 'none';
+                activeRegisterTaskerForm.classList.remove('active')
             } else {
-                registerForm.style.display = 'none';
-                registerTaskerForm.style.display = 'block';
+                // registerForm.style.display = 'none';
+                activeRegisterForm.classList.remove('active')
+                // registerTaskerForm.style.display = 'block';
+                activeRegisterTaskerForm.classList.add('active')
             }
         }
     });
@@ -122,19 +145,13 @@ if(selectFrom){
 
 // submit register user form 
 const registerForm = document.getElementById("register")
-const registerUser = document.querySelector(".js-register-user.active")
-if(registerUser){
+if(activeRegisterForm){
     registerForm.addEventListener("submit", function(e) {
         e.preventDefault();
         register();
     });
 }
-function displayError(message, appendError) {
-    errorElement = document.createElement('small');
-    errorElement.id = "error-message";
-    errorElement.textContent = message;
-    document.querySelector(appendError).appendChild(errorElement);
-}
+
 // register users form
 function register() {
     const fullName = document.getElementById("full-name").value;
@@ -172,15 +189,14 @@ function register() {
 
 // submit register tasker form
 const registerTaskerForm = document.getElementById('register-tasker');
-
-if(registerTaskerForm){
-    this.addEventListener("submit", function(e) {
+if(activeRegisterTaskerForm){
+    registerTaskerForm.addEventListener("submit", function(e) {
         e.preventDefault();
         registerTasker();
     });
 
 }
-if (registerTaskerForm) {
+if (activeRegisterTaskerForm) {
     categoryList();
 }
 // Register tasker form
