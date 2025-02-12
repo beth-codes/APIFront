@@ -419,7 +419,7 @@ async function IndividualUser() {
         const userData = await fetchUserData();
         const userName = userData.userName;
         const para = document.createElement("p");
-        para.innerHTML = `Hi ${userName.charAt(0).toUpperCase() + userName.slice(1)}, welcome to TR. You have successfully registered and logged in to TR. Select a category to book a task`;
+        para.innerHTML = `Hi ${userName.charAt(0).toUpperCase() + userName.slice(1)}, welcome to C&B. You have successfully registered and logged in to TR. Select a category to book a task`;
         welcomeText.appendChild(para);
     } catch (error) {
         console.error("Error in IndividualUser:", error.message);
@@ -917,7 +917,6 @@ async function selectCategory() {
     
     categories.map(category => {
         const categoryItem = document.createElement('li');
-        // categoryItem.setAttribute('class', 'continue-btn');
         const categoryButton = document.createElement('button');
         categoryButton.setAttribute('category-id', category.id);
         categoryButton.textContent = category.category;
