@@ -44,8 +44,6 @@ function displayError(message, appendError) {
     existingError.textContent = message;
 }
 
-
-
 // Check if user is not logged in and not already on login, register, home, or about us page
 if (!localStorage.getItem('authToken')) {
     const currentPath = window.location.pathname;
@@ -119,24 +117,20 @@ async function categoryList() {
 }
 const activeRegisterForm = document.querySelector('.register-form');
 const activeRegisterTaskerForm = document.querySelector('.register-tasker-form');
-activeRegisterForm.classList.add('active')
 // Select between user and tasker form
 const selectFrom = document.querySelector('.select-from');
 if(selectFrom){
+    activeRegisterForm.classList.add('active');
     selectFrom.addEventListener('click', function (e) {
         if (e.target.tagName === 'SPAN') {
             selectFrom.querySelectorAll('span').forEach(el => el.classList.remove('active'));
             e.target.classList.add('active');
         
             if (e.target.classList.contains('js-register-user')) {
-                // registerForm.style.display = 'block';
                 activeRegisterForm.classList.add('active')
-                // registerTaskerForm.style.display = 'none';
                 activeRegisterTaskerForm.classList.remove('active')
             } else {
-                // registerForm.style.display = 'none';
                 activeRegisterForm.classList.remove('active')
-                // registerTaskerForm.style.display = 'block';
                 activeRegisterTaskerForm.classList.add('active')
             }
         }
@@ -273,9 +267,9 @@ async function loginForm() {
         }
         localStorage.setItem('authToken', result.data.token);
         const loggedInUser = result.data.isTasker;
-        if (loggedInUser.isTasker) {
+        if (loggedInUser.isTasker = true) {
             window.location.href = "/register/welcome-tasker.html";
-        } else{
+        } else if(loggedInUser.isTasker = false){
             window.location.href = "/register/welcome.html";
         }
 
@@ -837,7 +831,7 @@ async function displayAssignedTasks() {
             taskList.innerHTML = `<div class="task-list-item"><p>No tasks assigned yet.</p></div>`;
         }
     } catch (error) {
-        console.error("Error fetching tasks:", error);
+        taskList.innerHTML = `<div class="task-list-item"><p>No tasks assigned yet.</p></div>`;
     }
 
     // Close modal functionality when clicking on the cancel icon
