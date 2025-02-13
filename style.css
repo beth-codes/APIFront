@@ -220,6 +220,9 @@ img {
     text-align: center;
   }
 }
+#root-container .recommendation-banner #users-list .tasker-container .tasker-description button {
+  width: auto;
+}
 #root-container .forms {
   overflow: auto;
   padding-bottom: 5rem;
