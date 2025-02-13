@@ -221,7 +221,8 @@ img {
   }
 }
 #root-container .recommendation-banner #users-list .tasker-container .tasker-description button {
-  width: auto;
+  width: -moz-max-content;
+  width: max-content;
 }
 #root-container .forms {
   overflow: auto;
