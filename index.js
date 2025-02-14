@@ -556,7 +556,7 @@ async function displayAllBookedTask() {
                     </div>`: ''}
                     <p class="title">${task.title}</p>
                     <div class="task-status">
-                        Status: <strong class="status more ${!task.assignedToId ? 'complete-booking' : task.status}">${!task.assignedToId ? 'Complete Booking' : task.status}</strong>
+                        Status: <strong class="status ${!task.assignedToId ? 'more complete-booking' : task.status}">${!task.assignedToId ? 'Complete Booking' : task.status}</strong>
                     </div>
                 </div>
                 ${!task.assignedToId ? `
